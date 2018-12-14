@@ -1,0 +1,22 @@
+{
+  "name": "text-formatting-library",
+  "version": "1.0.0",
+  "description": "Short text formatting",
+  "main": "test.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amanej/text-formatting-tasks.git"
+  },
+  "keywords": [
+    "textformatting"
+  ],
+  "author": "Aman Mender",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amanej/text-formatting-tasks/issues"
+  },
+  "homepage": "https://github.com/Amanej/text-formatting-tasks#readme"
+}
