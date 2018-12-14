@@ -4,7 +4,8 @@
   "description": "Short text formatting",
   "main": "test.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "mocha",
+    "testContinous": "nodemon --watch . --exec 'mocha || true'"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/Amanej/text-formatting-tasks/issues"
   },
-  "homepage": "https://github.com/Amanej/text-formatting-tasks#readme"
+  "homepage": "https://github.com/Amanej/text-formatting-tasks#readme",
+  "dependencies": {
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
 }

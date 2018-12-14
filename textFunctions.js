@@ -1,5 +1,5 @@
 // Format lines to n characters
-export const formatTextToColumns = function(string,columnLength) {
+const formatTextToColumns = function(string,columnLength) {
     var formattedString = "";
     for(var i = 0; i < string.length; i++) {
         formattedString += string[i];
@@ -17,7 +17,7 @@ export const formatTextToColumns = function(string,columnLength) {
 /// Shorter than width - close as possible to n characters length
 /// Never end with space
 /// Never just whitespac
-export const formatTextsByColumnWithSpace = function(string,columnLength) {
+const formatTextsByColumnWithSpace = function(string,columnLength) {
     const helperFunctions = {
         // Check each line has no additional characters behind
         lineEndsWithSpace:(line) => {
@@ -60,3 +60,5 @@ export const formatTextsByColumnWithSpace = function(string,columnLength) {
 }
 
 // Split with hyphen
+
+module.exports = {formatTextToColumns,formatTextsByColumnWithSpace};
