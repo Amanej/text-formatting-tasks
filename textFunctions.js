@@ -37,7 +37,10 @@ const formatTextsByColumnWithSpace = function(string,columnLength) {
 	var lastIndex = null;
 
     for(var i = 0; i < string.length; i++) {
+        //console.log(i,string[i],columnLength, ((i+1) % columnLength));
         if(!((i+1) % columnLength)) {
+
+                //console.log(((i+1) % columnLength));
 
                 // Check current line 
                 let startPosition = lastIndex ? lastIndex : (i+1)-columnLength;
@@ -53,6 +56,19 @@ const formatTextsByColumnWithSpace = function(string,columnLength) {
                 
                 formattedString += (helperFunctions.addNewLine(l.trim()));
 
+        } else if((string.length-i) === (columnLength-1)) { //(string.length - i) < columnLength
+            /*
+            console.log("Last string",i,((string.length-i)-columnLength));
+            //console.log(string.substring((i+1)-columnLength));
+            var _newString = string.substring((i+1)-columnLength);
+            console.log(_newString,_newString.length);
+            console.log("String length ",string.length," Current index ",i," ColumnLength ",columnLength);
+            //console.log(string.length - i);
+            //console.log(i,string[i],columnLength, ((i+1) % columnLength));
+            */
+           var _newString = string.substring((i+1)-columnLength);
+           // Split last line
+           
         }
     }
     //console.log(formattedString)
