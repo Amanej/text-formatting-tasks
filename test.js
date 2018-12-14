@@ -22,6 +22,18 @@ describe('Test text formatting functions', function() {
         });
     });
     describe('New line after space', function() {
+        // Cant deal with more than 10 characters
+        var formatTextTo10 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,10);
+            //console.log(formatTextTo10);
+        // 20 characters - max width
+        var formatTextTo20 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,20);
+            //console.log(formatTextTo20);
+        // 30 characters - max width
+        var formatTextTo30 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,30);
+        console.log(formatTextTo30);
+        // 40 characters - max width
+        var formatTextTo40 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,40);
+        console.log(formatTextTo40);
         it('format lorem ipsum', function() {
             assert.equal([1,2,3].indexOf(4), -1);
         });
