@@ -120,7 +120,6 @@ const formatTextWithHyphen = function(string,columnLength) {
                 
                 // Last line add 
                 if(string.length - i < columnLength) {
-                    console.log("Last !");
                     formattedString += string.substring(i+1).trim();
                 }
 

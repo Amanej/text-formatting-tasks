@@ -6,67 +6,35 @@ const newsPaperParagraph = 'Du har kanskje sett reklame for dem rundtom på nett
 
 
 describe('Test text formatting functions', function() {
+    const maxWidths = [10,20,30,40];
     describe('Max width new line', function() {
         // Test Max Width of New Line
-            // No max width
-            var formattedLoremIpsum = textFunctions.formatTextToColumns(loremIpsumString);
-                //console.log(formattedLoremIpsum);
-            // 10 characters - max width
-            var formatTextTo10 = textFunctions.formatTextToColumns(loremIpsumString,10);
-                //console.log(formatTextTo10);
-            // 20 characters - max width
-            var formatTextTo20 = textFunctions.formatTextToColumns(loremIpsumString,20);
-                //console.log(formatTextTo20);
-
-            // 10 characters - max width
-            var formatNewspaperParagraphTo10 = textFunctions.formatTextToColumns(newsPaperParagraph,10);
-                //console.log(formatNewspaperParagraphTo10);
-            // 20 characters - max width
-            var formatNewspaperParagraphTo20 = textFunctions.formatTextToColumns(newsPaperParagraph,20);
-                //console.log(formatNewspaperParagraphTo20);                
-
-        it('format lorem ipsum', function() {
-            assert.equal([1,2,3].indexOf(4), -1);
-        });
+            maxWidths.forEach(w => {
+                console.log('Width ',w);
+                var formatTextTo10 = textFunctions.formatTextToColumns(loremIpsumString,w);
+                it('Check that no lines is longer than '+w, function() {
+                    var maxLetter10 = formatTextTo10.split('\n').filter(e => e.length > w);
+                    assert.equal(maxLetter10.length, 0)
+                });
+            });           
     });
     describe('New line after space', function() {
-        // Cant deal with more than 10 characters
-        /*var formatTextTo10 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,10);
-            //console.log(formatTextTo10);
-        // 20 characters - max width
-        var formatTextTo20 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,20);
-            //console.log(formatTextTo20);
-        // 30 characters - max width
-        var formatTextTo30 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,30);
-        //console.log(formatTextTo30);
-        */
-        // 40 characters - max width
-        var formatTextTo40 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,40);
-        console.log(formatTextTo40);
-        //console.log(" ");
-        /*
-        // 30 characters - max width
-        var formatNewspaperParagraphTo30 = textFunctions.formatTextsByColumnWithSpace(newsPaperParagraph,30);
-            //console.log(formatNewspaperParagraphTo30);
-        */
-        // 40 characters - max width
-        var formatNewsaperParagraphTo40 = textFunctions.formatTextsByColumnWithSpace(newsPaperParagraph,40);
-            console.log(formatNewsaperParagraphTo40);
-
-        it('format lorem ipsum', function() {
-            assert.equal([1,2,3].indexOf(4), -1);
+        maxWidths.forEach(w => {
+            var formattedText = textFunctions.formatTextsByColumnWithSpace(newsPaperParagraph,w);
+            it('Check that no lines is longer than '+w, function() {
+                var maxLetters = formattedText.split('\n').filter(e => e.length > w);
+                assert.equal(maxLetters.length, 0)
+            });
         });
     });
     describe('Add hyphen function', function() {
-        /*
-        var formatNewspaperParagraphTo10 = textFunctions.formatTextWithHyphen(newsPaperParagraph,10);
-        console.log(formatNewspaperParagraphTo10);
-        */
-        var formatNewspaperParagraphTo20 = textFunctions.formatTextWithHyphen(newsPaperParagraph,20);
-        console.log(formatNewspaperParagraphTo20);
-
-        it('format lorem ipsum', function() {
-            assert.equal([1,2,3].indexOf(4), -1);
+        maxWidths.forEach(w => {
+            var formattedText = textFunctions.formatTextWithHyphen(newsPaperParagraph,w);
+            it('Check that no lines is longer than '+w, function() {
+                var maxLetters = formattedText.split('\n').filter(e => e.length > w);
+                assert.equal(maxLetters.length, 0)
+            });
         });
+
     });
 });
