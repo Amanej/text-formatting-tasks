@@ -43,7 +43,7 @@ describe('Test text formatting functions', function() {
         // 40 characters - max width
         var formatTextTo40 = textFunctions.formatTextsByColumnWithSpace(loremIpsumString,40);
         console.log(formatTextTo40);
-        console.log(" ");
+        //console.log(" ");
         /*
         // 30 characters - max width
         var formatNewspaperParagraphTo30 = textFunctions.formatTextsByColumnWithSpace(newsPaperParagraph,30);
@@ -58,8 +58,12 @@ describe('Test text formatting functions', function() {
         });
     });
     describe('Add hyphen function', function() {
-        //var formatNewspaperParagraphTo10 = textFunctions.formatTextWithHyphen(newsPaperParagraph,10);
-        //console.log(formatNewspaperParagraphTo10);
+        /*
+        var formatNewspaperParagraphTo10 = textFunctions.formatTextWithHyphen(newsPaperParagraph,10);
+        console.log(formatNewspaperParagraphTo10);
+        */
+        var formatNewspaperParagraphTo20 = textFunctions.formatTextWithHyphen(newsPaperParagraph,20);
+        console.log(formatNewspaperParagraphTo20);
 
         it('format lorem ipsum', function() {
             assert.equal([1,2,3].indexOf(4), -1);

@@ -12,10 +12,11 @@ const formatTextToColumns = function(string,columnLength) {
 
 // Split on space
 // Format lines to n characters
-/// Split space if possible
-/// Shorter than width - close as possible to n characters length
-/// Never end with space
-/// Never just whitespac
+    /// Conditions
+    /// Split space if possible
+    /// Shorter than width - close as possible to n characters length
+    /// Never end with space
+    /// Never just whitespace
 const formatTextsByColumnWithSpace = function(string,columnLength) {
     const helperFunctions = {
         // Check each line has no additional characters behind
@@ -104,8 +105,9 @@ const formatTextWithHyphen = function(string,columnLength) {
                     end: lastIndex ? (lastIndex+columnLength) :(i+1)
                 }
                 let currentLine = helperFunctions.createCurrentline(string,position.start,position.end);
-                console.log(currentLine);
-                let lastIndexSpace = currentLine.lastIndexOf(" ");
+                let checkLine = helperFunctions.createCurrentline(string,position.start,position.end+1);
+
+                let lastIndexSpace = checkLine.lastIndexOf(" ");
                 if(lastIndexSpace) {
                     lastIndex = lastIndexSpace+position.start;
                     line = helperFunctions.createCurrentline(currentLine,0,lastIndexSpace);
@@ -118,6 +120,7 @@ const formatTextWithHyphen = function(string,columnLength) {
                 
                 // Last line add 
                 if(string.length - i < columnLength) {
+                    console.log("Last !");
                     formattedString += string.substring(i+1).trim();
                 }
 
