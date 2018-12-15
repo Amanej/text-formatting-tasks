@@ -29,6 +29,21 @@ const formatTextsByColumnWithSpace = function(string,columnLength) {
         // Create currentline
         createCurrentline:(string,startPosition,endPosition) => {
             return currentLine = string.substring(startPosition,endPosition);
+        },
+        createPosition:(lastIndex,iCalculable,columnLength) => {
+            return position = {
+                start: lastIndex ? lastIndex : (iCalculable)-columnLength,
+                end: lastIndex ? (lastIndex+columnLength) :(iCalculable)
+            };            
+        },
+        generateLineAndIndex:(string,position) => {
+            const currentLine = helperFunctions.createCurrentline(string,position.start,position.end);
+            const lastIndexSpace = currentLine.lastIndexOf(" ");
+            const lastIndex =  lastIndexSpace+position.start;
+            return {
+                line: helperFunctions.createCurrentline(currentLine,0,lastIndexSpace),
+                lastIndex: lastIndex
+            }
         }
     };
 
@@ -36,22 +51,19 @@ const formatTextsByColumnWithSpace = function(string,columnLength) {
 	var lastIndex = null;
 
     for(var i = 0; i < string.length; i++) {
-        if(!((i+1) % columnLength)) {
+        const iCalculable = (i+1);
+        const lastCharInColumn = !((iCalculable) % columnLength);
+        if(lastCharInColumn) {
                 // Check current line 
-                let position = {
-                    start: lastIndex ? lastIndex : (i+1)-columnLength,
-                    end: lastIndex ? (lastIndex+columnLength) :(i+1)
-                }
-                let currentLine = helperFunctions.createCurrentline(string,position.start,position.end);
-				let lastIndexSpace = currentLine.lastIndexOf(" ");
-				lastIndex = lastIndexSpace+position.start;
-				let l = helperFunctions.createCurrentline(currentLine,0,lastIndexSpace);
+                let position = helperFunctions.createPosition(lastIndex,iCalculable,columnLength);
+                const lineAndIndex = helperFunctions.generateLineAndIndex(string,position);
+                lastIndex = lineAndIndex.lastIndex;
  
-                formattedString += (helperFunctions.addNewLine(l.trim()));
+                formattedString += (helperFunctions.addNewLine(lineAndIndex.line.trim()));
                 
                 // Last line add 
                 if(string.length - i < columnLength) {
-                    formattedString += string.substring(i+1).trim();
+                    formattedString += string.substring(iCalculable).trim();
                 }
 
         }
