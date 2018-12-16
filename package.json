@@ -5,7 +5,7 @@
   "main": "test.js",
   "scripts": {
     "test": "mocha",
-    "testContinous": "nodemon --watch . --exec 'mocha || true'"
+    "testDev": "nodemon --watch . --exec 'mocha || true'"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "url": "https://github.com/Amanej/text-formatting-tasks/issues"
   },
   "homepage": "https://github.com/Amanej/text-formatting-tasks#readme",
-  "dependencies": {
+  "devDependencies": {
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
